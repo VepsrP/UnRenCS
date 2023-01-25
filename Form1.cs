@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 
 namespace UnRenCS
@@ -10,7 +9,6 @@ namespace UnRenCS
     public partial class Form1 : Form
     {
         private List<GameFolder> gameFolders;
-        private GameFolder gameFolder;
         public Form1()
         {
             InitializeComponent();
@@ -37,8 +35,8 @@ namespace UnRenCS
                 if (One.Checked)
                 {
                     DirectoryInfo directory= new DirectoryInfo(folderBrowserDialog.SelectedPath);
-                    gameFolder.Name = directory.Name;
-                    gameFolder.ChangeDate = directory.LastWriteTime;
+                    gameFolders.Add(new GameFolder(directory.Name, directory.LastWriteTime));
+                    foreach (GameFolder gameFolder in gameFolders) directories_list.Items.Add(gameFolder.Name);
                 }
 
                 if (Many.Checked)
@@ -53,6 +51,7 @@ namespace UnRenCS
                     if (by_date.Checked) gameFolders = gameFolders.OrderByDescending(x => x.ChangeDate).ToList();
                     foreach (GameFolder gameFolder in gameFolders) directories_list.Items.Add(gameFolder.Name);
                 }
+                directories_list.SelectedIndex = 0;
             }
         }
 
@@ -60,6 +59,28 @@ namespace UnRenCS
         {
             Many.Checked = true;
             by_name.Checked = true;
+        }
+
+        private void by_name_Click(object sender, EventArgs e)
+        {
+            if (gameFolders != null && gameFolders.Count > 0)
+            {
+                gameFolders = gameFolders.OrderBy(x => x.Name).ToList();
+                directories_list.Items.Clear();
+                foreach (GameFolder gameFolder in gameFolders) directories_list.Items.Add(gameFolder.Name);
+                directories_list.SelectedIndex = 0;
+            }
+        }
+
+        private void by_date_Click(object sender, EventArgs e)
+        {
+            if (gameFolders != null && gameFolders.Count > 0)
+            {
+                gameFolders = gameFolders.OrderByDescending(x => x.ChangeDate).ToList();
+                directories_list.Items.Clear();
+                foreach (GameFolder gameFolder in gameFolders) directories_list.Items.Add(gameFolder.Name);
+                directories_list.SelectedIndex = 0;
+            }
         }
     }
 }

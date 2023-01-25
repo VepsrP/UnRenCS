@@ -29,40 +29,40 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.console_log = new System.Windows.Forms.RichTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.directories_list = new System.Windows.Forms.ListBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.Many = new System.Windows.Forms.RadioButton();
+            this.One = new System.Windows.Forms.RadioButton();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.by_date = new System.Windows.Forms.RadioButton();
+            this.by_name = new System.Windows.Forms.RadioButton();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.rollback = new System.Windows.Forms.CheckBox();
+            this.skipping = new System.Windows.Forms.CheckBox();
+            this.quick_menu = new System.Windows.Forms.CheckBox();
+            this.console = new System.Windows.Forms.CheckBox();
+            this.decompile = new System.Windows.Forms.CheckBox();
+            this.unpacking = new System.Windows.Forms.CheckBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.dump = new System.Windows.Forms.CheckBox();
+            this.deobfuscation = new System.Windows.Forms.CheckBox();
+            this.Overwrite = new System.Windows.Forms.CheckBox();
             this.game_path = new System.Windows.Forms.TextBox();
             this.open_folder = new System.Windows.Forms.Button();
             this.execute = new System.Windows.Forms.Button();
-            this.console_log = new System.Windows.Forms.RichTextBox();
-            this.unpacking = new System.Windows.Forms.CheckBox();
-            this.decompile = new System.Windows.Forms.CheckBox();
-            this.console = new System.Windows.Forms.CheckBox();
-            this.quick_menu = new System.Windows.Forms.CheckBox();
-            this.skipping = new System.Windows.Forms.CheckBox();
-            this.rollback = new System.Windows.Forms.CheckBox();
-            this.Overwrite = new System.Windows.Forms.CheckBox();
-            this.deobfuscation = new System.Windows.Forms.CheckBox();
-            this.dump = new System.Windows.Forms.CheckBox();
-            this.by_name = new System.Windows.Forms.RadioButton();
-            this.by_date = new System.Windows.Forms.RadioButton();
-            this.One = new System.Windows.Forms.RadioButton();
-            this.Many = new System.Windows.Forms.RadioButton();
-            this.directories_list = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.console_log);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -71,6 +71,17 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Console Log";
+            // 
+            // console_log
+            // 
+            this.console_log.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.console_log.Location = new System.Drawing.Point(6, 19);
+            this.console_log.Name = "console_log";
+            this.console_log.Size = new System.Drawing.Size(523, 135);
+            this.console_log.TabIndex = 0;
+            this.console_log.Text = "";
             // 
             // groupBox2
             // 
@@ -84,18 +95,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Game folders";
             // 
-            // groupBox3
+            // directories_list
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.by_date);
-            this.groupBox3.Controls.Add(this.by_name);
-            this.groupBox3.Location = new System.Drawing.Point(381, 103);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(148, 76);
-            this.groupBox3.TabIndex = 0;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Sorting";
+            this.directories_list.FormattingEnabled = true;
+            this.directories_list.Location = new System.Drawing.Point(5, 19);
+            this.directories_list.Name = "directories_list";
+            this.directories_list.Size = new System.Drawing.Size(370, 160);
+            this.directories_list.TabIndex = 2;
             // 
             // groupBox4
             // 
@@ -107,6 +113,65 @@
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Amount of games";
+            // 
+            // Many
+            // 
+            this.Many.AutoSize = true;
+            this.Many.Location = new System.Drawing.Point(7, 44);
+            this.Many.Name = "Many";
+            this.Many.Size = new System.Drawing.Size(51, 17);
+            this.Many.TabIndex = 1;
+            this.Many.TabStop = true;
+            this.Many.Text = "Many";
+            this.Many.UseVisualStyleBackColor = true;
+            // 
+            // One
+            // 
+            this.One.AutoSize = true;
+            this.One.Location = new System.Drawing.Point(7, 20);
+            this.One.Name = "One";
+            this.One.Size = new System.Drawing.Size(45, 17);
+            this.One.TabIndex = 0;
+            this.One.TabStop = true;
+            this.One.Text = "One";
+            this.One.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.by_date);
+            this.groupBox3.Controls.Add(this.by_name);
+            this.groupBox3.Location = new System.Drawing.Point(381, 103);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(148, 76);
+            this.groupBox3.TabIndex = 0;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Sorting";
+            // 
+            // by_date
+            // 
+            this.by_date.AutoSize = true;
+            this.by_date.Location = new System.Drawing.Point(7, 44);
+            this.by_date.Name = "by_date";
+            this.by_date.Size = new System.Drawing.Size(62, 17);
+            this.by_date.TabIndex = 1;
+            this.by_date.TabStop = true;
+            this.by_date.Text = "by Date";
+            this.by_date.UseVisualStyleBackColor = true;
+            this.by_date.Click += new System.EventHandler(this.by_date_Click);
+            // 
+            // by_name
+            // 
+            this.by_name.AutoSize = true;
+            this.by_name.Location = new System.Drawing.Point(7, 20);
+            this.by_name.Name = "by_name";
+            this.by_name.Size = new System.Drawing.Size(67, 17);
+            this.by_name.TabIndex = 0;
+            this.by_name.TabStop = true;
+            this.by_name.Text = "by Name";
+            this.by_name.UseVisualStyleBackColor = true;
+            this.by_name.Click += new System.EventHandler(this.by_name_Click);
             // 
             // groupBox5
             // 
@@ -123,6 +188,66 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Executable commands";
             // 
+            // rollback
+            // 
+            this.rollback.AutoSize = true;
+            this.rollback.Location = new System.Drawing.Point(5, 139);
+            this.rollback.Name = "rollback";
+            this.rollback.Size = new System.Drawing.Size(204, 17);
+            this.rollback.TabIndex = 5;
+            this.rollback.Text = "6. Force enable rollback (scroll wheel)";
+            this.rollback.UseVisualStyleBackColor = true;
+            // 
+            // skipping
+            // 
+            this.skipping.AutoSize = true;
+            this.skipping.Location = new System.Drawing.Point(6, 115);
+            this.skipping.Name = "skipping";
+            this.skipping.Size = new System.Drawing.Size(227, 17);
+            this.skipping.TabIndex = 4;
+            this.skipping.Text = "5. Force enabling skipping unseen content";
+            this.skipping.UseVisualStyleBackColor = true;
+            // 
+            // quick_menu
+            // 
+            this.quick_menu.AutoSize = true;
+            this.quick_menu.Location = new System.Drawing.Point(5, 92);
+            this.quick_menu.Name = "quick_menu";
+            this.quick_menu.Size = new System.Drawing.Size(178, 17);
+            this.quick_menu.TabIndex = 3;
+            this.quick_menu.Text = "4. Enabling quick save and load";
+            this.quick_menu.UseVisualStyleBackColor = true;
+            // 
+            // console
+            // 
+            this.console.AutoSize = true;
+            this.console.Location = new System.Drawing.Point(5, 68);
+            this.console.Name = "console";
+            this.console.Size = new System.Drawing.Size(237, 17);
+            this.console.TabIndex = 2;
+            this.console.Text = "3. Enabling the developer console and menu";
+            this.console.UseVisualStyleBackColor = true;
+            // 
+            // decompile
+            // 
+            this.decompile.AutoSize = true;
+            this.decompile.Location = new System.Drawing.Point(7, 44);
+            this.decompile.Name = "decompile";
+            this.decompile.Size = new System.Drawing.Size(109, 17);
+            this.decompile.TabIndex = 1;
+            this.decompile.Text = "2. Decompile files";
+            this.decompile.UseVisualStyleBackColor = true;
+            // 
+            // unpacking
+            // 
+            this.unpacking.AutoSize = true;
+            this.unpacking.Location = new System.Drawing.Point(7, 20);
+            this.unpacking.Name = "unpacking";
+            this.unpacking.Size = new System.Drawing.Size(90, 17);
+            this.unpacking.TabIndex = 0;
+            this.unpacking.Text = "1. Unpacking";
+            this.unpacking.UseVisualStyleBackColor = true;
+            // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.dump);
@@ -134,6 +259,36 @@
             this.groupBox6.TabIndex = 4;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Decompiler commands";
+            // 
+            // dump
+            // 
+            this.dump.AutoSize = true;
+            this.dump.Location = new System.Drawing.Point(7, 68);
+            this.dump.Name = "dump";
+            this.dump.Size = new System.Drawing.Size(89, 17);
+            this.dump.TabIndex = 2;
+            this.dump.Text = "Write a dump";
+            this.dump.UseVisualStyleBackColor = true;
+            // 
+            // deobfuscation
+            // 
+            this.deobfuscation.AutoSize = true;
+            this.deobfuscation.Location = new System.Drawing.Point(7, 44);
+            this.deobfuscation.Name = "deobfuscation";
+            this.deobfuscation.Size = new System.Drawing.Size(95, 17);
+            this.deobfuscation.TabIndex = 1;
+            this.deobfuscation.Text = "Deobfuscation";
+            this.deobfuscation.UseVisualStyleBackColor = true;
+            // 
+            // Overwrite
+            // 
+            this.Overwrite.AutoSize = true;
+            this.Overwrite.Location = new System.Drawing.Point(7, 20);
+            this.Overwrite.Name = "Overwrite";
+            this.Overwrite.Size = new System.Drawing.Size(130, 17);
+            this.Overwrite.TabIndex = 0;
+            this.Overwrite.Text = "Overwrite existing files";
+            this.Overwrite.UseVisualStyleBackColor = true;
             // 
             // game_path
             // 
@@ -162,159 +317,6 @@
             this.execute.Text = "Execute";
             this.execute.UseVisualStyleBackColor = true;
             // 
-            // console_log
-            // 
-            this.console_log.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.console_log.Location = new System.Drawing.Point(6, 19);
-            this.console_log.Name = "console_log";
-            this.console_log.Size = new System.Drawing.Size(523, 135);
-            this.console_log.TabIndex = 0;
-            this.console_log.Text = "";
-            // 
-            // unpacking
-            // 
-            this.unpacking.AutoSize = true;
-            this.unpacking.Location = new System.Drawing.Point(7, 20);
-            this.unpacking.Name = "unpacking";
-            this.unpacking.Size = new System.Drawing.Size(90, 17);
-            this.unpacking.TabIndex = 0;
-            this.unpacking.Text = "1. Unpacking";
-            this.unpacking.UseVisualStyleBackColor = true;
-            // 
-            // decompile
-            // 
-            this.decompile.AutoSize = true;
-            this.decompile.Location = new System.Drawing.Point(7, 44);
-            this.decompile.Name = "decompile";
-            this.decompile.Size = new System.Drawing.Size(109, 17);
-            this.decompile.TabIndex = 1;
-            this.decompile.Text = "2. Decompile files";
-            this.decompile.UseVisualStyleBackColor = true;
-            // 
-            // console
-            // 
-            this.console.AutoSize = true;
-            this.console.Location = new System.Drawing.Point(5, 68);
-            this.console.Name = "console";
-            this.console.Size = new System.Drawing.Size(237, 17);
-            this.console.TabIndex = 2;
-            this.console.Text = "3. Enabling the developer console and menu";
-            this.console.UseVisualStyleBackColor = true;
-            // 
-            // quick_menu
-            // 
-            this.quick_menu.AutoSize = true;
-            this.quick_menu.Location = new System.Drawing.Point(5, 92);
-            this.quick_menu.Name = "quick_menu";
-            this.quick_menu.Size = new System.Drawing.Size(178, 17);
-            this.quick_menu.TabIndex = 3;
-            this.quick_menu.Text = "4. Enabling quick save and load";
-            this.quick_menu.UseVisualStyleBackColor = true;
-            // 
-            // skipping
-            // 
-            this.skipping.AutoSize = true;
-            this.skipping.Location = new System.Drawing.Point(6, 115);
-            this.skipping.Name = "skipping";
-            this.skipping.Size = new System.Drawing.Size(227, 17);
-            this.skipping.TabIndex = 4;
-            this.skipping.Text = "5. Force enabling skipping unseen content";
-            this.skipping.UseVisualStyleBackColor = true;
-            // 
-            // rollback
-            // 
-            this.rollback.AutoSize = true;
-            this.rollback.Location = new System.Drawing.Point(5, 139);
-            this.rollback.Name = "rollback";
-            this.rollback.Size = new System.Drawing.Size(204, 17);
-            this.rollback.TabIndex = 5;
-            this.rollback.Text = "6. Force enable rollback (scroll wheel)";
-            this.rollback.UseVisualStyleBackColor = true;
-            // 
-            // Overwrite
-            // 
-            this.Overwrite.AutoSize = true;
-            this.Overwrite.Location = new System.Drawing.Point(7, 20);
-            this.Overwrite.Name = "Overwrite";
-            this.Overwrite.Size = new System.Drawing.Size(130, 17);
-            this.Overwrite.TabIndex = 0;
-            this.Overwrite.Text = "Overwrite existing files";
-            this.Overwrite.UseVisualStyleBackColor = true;
-            // 
-            // deobfuscation
-            // 
-            this.deobfuscation.AutoSize = true;
-            this.deobfuscation.Location = new System.Drawing.Point(7, 44);
-            this.deobfuscation.Name = "deobfuscation";
-            this.deobfuscation.Size = new System.Drawing.Size(95, 17);
-            this.deobfuscation.TabIndex = 1;
-            this.deobfuscation.Text = "Deobfuscation";
-            this.deobfuscation.UseVisualStyleBackColor = true;
-            // 
-            // dump
-            // 
-            this.dump.AutoSize = true;
-            this.dump.Location = new System.Drawing.Point(7, 68);
-            this.dump.Name = "dump";
-            this.dump.Size = new System.Drawing.Size(89, 17);
-            this.dump.TabIndex = 2;
-            this.dump.Text = "Write a dump";
-            this.dump.UseVisualStyleBackColor = true;
-            // 
-            // by_name
-            // 
-            this.by_name.AutoSize = true;
-            this.by_name.Location = new System.Drawing.Point(7, 20);
-            this.by_name.Name = "by_name";
-            this.by_name.Size = new System.Drawing.Size(67, 17);
-            this.by_name.TabIndex = 0;
-            this.by_name.TabStop = true;
-            this.by_name.Text = "by Name";
-            this.by_name.UseVisualStyleBackColor = true;
-            // 
-            // by_date
-            // 
-            this.by_date.AutoSize = true;
-            this.by_date.Location = new System.Drawing.Point(7, 44);
-            this.by_date.Name = "by_date";
-            this.by_date.Size = new System.Drawing.Size(62, 17);
-            this.by_date.TabIndex = 1;
-            this.by_date.TabStop = true;
-            this.by_date.Text = "by Date";
-            this.by_date.UseVisualStyleBackColor = true;
-            // 
-            // One
-            // 
-            this.One.AutoSize = true;
-            this.One.Location = new System.Drawing.Point(7, 20);
-            this.One.Name = "One";
-            this.One.Size = new System.Drawing.Size(45, 17);
-            this.One.TabIndex = 0;
-            this.One.TabStop = true;
-            this.One.Text = "One";
-            this.One.UseVisualStyleBackColor = true;
-            // 
-            // Many
-            // 
-            this.Many.AutoSize = true;
-            this.Many.Location = new System.Drawing.Point(7, 44);
-            this.Many.Name = "Many";
-            this.Many.Size = new System.Drawing.Size(51, 17);
-            this.Many.TabIndex = 1;
-            this.Many.TabStop = true;
-            this.Many.Text = "Many";
-            this.Many.UseVisualStyleBackColor = true;
-            // 
-            // directories_list
-            // 
-            this.directories_list.FormattingEnabled = true;
-            this.directories_list.Location = new System.Drawing.Point(5, 19);
-            this.directories_list.Name = "directories_list";
-            this.directories_list.Size = new System.Drawing.Size(370, 160);
-            this.directories_list.TabIndex = 2;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -337,10 +339,10 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
