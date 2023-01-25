@@ -8,7 +8,7 @@ namespace UnRenCS
 {
     public partial class Form1 : Form
     {
-        private List<GameFolder> gameFolders;
+        private List<DirectoryInfo> gameFolders;
         public Form1()
         {
             InitializeComponent();
@@ -29,14 +29,14 @@ namespace UnRenCS
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
-                gameFolders = new List<GameFolder>();
+                gameFolders = new List<DirectoryInfo>();
                 directories_list.Items.Clear();
 
                 if (One.Checked)
                 {
                     DirectoryInfo directory= new DirectoryInfo(folderBrowserDialog.SelectedPath);
-                    gameFolders.Add(new GameFolder(directory.Name, directory.LastWriteTime));
-                    foreach (GameFolder gameFolder in gameFolders) directories_list.Items.Add(gameFolder.Name);
+                    gameFolders.Add(directory);
+                    foreach (DirectoryInfo gameFolder in gameFolders) directories_list.Items.Add(gameFolder.Name);
                 }
 
                 if (Many.Checked)
@@ -45,11 +45,11 @@ namespace UnRenCS
                     foreach (string directory in directories)
                     {
                         DirectoryInfo directoryInfo = new DirectoryInfo(directory);
-                        gameFolders.Add(new GameFolder(directoryInfo.Name, directoryInfo.LastWriteTime));
+                        gameFolders.Add(directoryInfo);
                     }
                     if (by_name.Checked) gameFolders = gameFolders.OrderBy(x => x.Name).ToList();
-                    if (by_date.Checked) gameFolders = gameFolders.OrderByDescending(x => x.ChangeDate).ToList();
-                    foreach (GameFolder gameFolder in gameFolders) directories_list.Items.Add(gameFolder.Name);
+                    if (by_date.Checked) gameFolders = gameFolders.OrderByDescending(x => x.LastWriteTime).ToList();
+                    foreach (DirectoryInfo gameFolder in gameFolders) directories_list.Items.Add(gameFolder.Name);
                 }
                 directories_list.SelectedIndex = 0;
             }
@@ -67,7 +67,7 @@ namespace UnRenCS
             {
                 gameFolders = gameFolders.OrderBy(x => x.Name).ToList();
                 directories_list.Items.Clear();
-                foreach (GameFolder gameFolder in gameFolders) directories_list.Items.Add(gameFolder.Name);
+                foreach (DirectoryInfo gameFolder in gameFolders) directories_list.Items.Add(gameFolder.Name);
                 directories_list.SelectedIndex = 0;
             }
         }
@@ -76,9 +76,9 @@ namespace UnRenCS
         {
             if (gameFolders != null && gameFolders.Count > 0)
             {
-                gameFolders = gameFolders.OrderByDescending(x => x.ChangeDate).ToList();
+                gameFolders = gameFolders.OrderByDescending(x => x.LastWriteTime).ToList();
                 directories_list.Items.Clear();
-                foreach (GameFolder gameFolder in gameFolders) directories_list.Items.Add(gameFolder.Name);
+                foreach (DirectoryInfo gameFolder in gameFolders) directories_list.Items.Add(gameFolder.Name);
                 directories_list.SelectedIndex = 0;
             }
         }
