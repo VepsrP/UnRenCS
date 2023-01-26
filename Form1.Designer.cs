@@ -65,7 +65,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.console_log);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 15);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(535, 160);
             this.groupBox1.TabIndex = 1;
@@ -88,7 +88,7 @@
             this.groupBox2.Controls.Add(this.directories_list);
             this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.groupBox3);
-            this.groupBox2.Location = new System.Drawing.Point(12, 178);
+            this.groupBox2.Location = new System.Drawing.Point(12, 180);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(535, 185);
             this.groupBox2.TabIndex = 2;
@@ -159,7 +159,7 @@
             this.by_date.TabStop = true;
             this.by_date.Text = "by Date";
             this.by_date.UseVisualStyleBackColor = true;
-            this.by_date.Click += new System.EventHandler(this.by_date_Click);
+            this.by_date.Click += new System.EventHandler(this.By_date_Click);
             // 
             // by_name
             // 
@@ -171,7 +171,7 @@
             this.by_name.TabStop = true;
             this.by_name.Text = "by Name";
             this.by_name.UseVisualStyleBackColor = true;
-            this.by_name.Click += new System.EventHandler(this.by_name_Click);
+            this.by_name.Click += new System.EventHandler(this.By_name_Click);
             // 
             // groupBox5
             // 
@@ -181,9 +181,9 @@
             this.groupBox5.Controls.Add(this.console);
             this.groupBox5.Controls.Add(this.decompile);
             this.groupBox5.Controls.Add(this.unpacking);
-            this.groupBox5.Location = new System.Drawing.Point(12, 369);
+            this.groupBox5.Location = new System.Drawing.Point(12, 370);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(375, 159);
+            this.groupBox5.Size = new System.Drawing.Size(375, 143);
             this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Executable commands";
@@ -191,7 +191,7 @@
             // rollback
             // 
             this.rollback.AutoSize = true;
-            this.rollback.Location = new System.Drawing.Point(5, 139);
+            this.rollback.Location = new System.Drawing.Point(10, 120);
             this.rollback.Name = "rollback";
             this.rollback.Size = new System.Drawing.Size(204, 17);
             this.rollback.TabIndex = 5;
@@ -201,7 +201,7 @@
             // skipping
             // 
             this.skipping.AutoSize = true;
-            this.skipping.Location = new System.Drawing.Point(6, 115);
+            this.skipping.Location = new System.Drawing.Point(10, 100);
             this.skipping.Name = "skipping";
             this.skipping.Size = new System.Drawing.Size(227, 17);
             this.skipping.TabIndex = 4;
@@ -211,7 +211,7 @@
             // quick_menu
             // 
             this.quick_menu.AutoSize = true;
-            this.quick_menu.Location = new System.Drawing.Point(5, 92);
+            this.quick_menu.Location = new System.Drawing.Point(10, 80);
             this.quick_menu.Name = "quick_menu";
             this.quick_menu.Size = new System.Drawing.Size(178, 17);
             this.quick_menu.TabIndex = 3;
@@ -221,7 +221,7 @@
             // console
             // 
             this.console.AutoSize = true;
-            this.console.Location = new System.Drawing.Point(5, 68);
+            this.console.Location = new System.Drawing.Point(10, 60);
             this.console.Name = "console";
             this.console.Size = new System.Drawing.Size(237, 17);
             this.console.TabIndex = 2;
@@ -231,7 +231,7 @@
             // decompile
             // 
             this.decompile.AutoSize = true;
-            this.decompile.Location = new System.Drawing.Point(7, 44);
+            this.decompile.Location = new System.Drawing.Point(10, 40);
             this.decompile.Name = "decompile";
             this.decompile.Size = new System.Drawing.Size(109, 17);
             this.decompile.TabIndex = 1;
@@ -241,7 +241,7 @@
             // unpacking
             // 
             this.unpacking.AutoSize = true;
-            this.unpacking.Location = new System.Drawing.Point(7, 20);
+            this.unpacking.Location = new System.Drawing.Point(10, 20);
             this.unpacking.Name = "unpacking";
             this.unpacking.Size = new System.Drawing.Size(90, 17);
             this.unpacking.TabIndex = 0;
@@ -253,9 +253,9 @@
             this.groupBox6.Controls.Add(this.dump);
             this.groupBox6.Controls.Add(this.deobfuscation);
             this.groupBox6.Controls.Add(this.Overwrite);
-            this.groupBox6.Location = new System.Drawing.Point(393, 369);
+            this.groupBox6.Location = new System.Drawing.Point(395, 370);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(154, 122);
+            this.groupBox6.Size = new System.Drawing.Size(154, 97);
             this.groupBox6.TabIndex = 4;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Decompiler commands";
@@ -263,7 +263,7 @@
             // dump
             // 
             this.dump.AutoSize = true;
-            this.dump.Location = new System.Drawing.Point(7, 68);
+            this.dump.Location = new System.Drawing.Point(10, 70);
             this.dump.Name = "dump";
             this.dump.Size = new System.Drawing.Size(89, 17);
             this.dump.TabIndex = 2;
@@ -273,7 +273,7 @@
             // deobfuscation
             // 
             this.deobfuscation.AutoSize = true;
-            this.deobfuscation.Location = new System.Drawing.Point(7, 44);
+            this.deobfuscation.Location = new System.Drawing.Point(10, 45);
             this.deobfuscation.Name = "deobfuscation";
             this.deobfuscation.Size = new System.Drawing.Size(95, 17);
             this.deobfuscation.TabIndex = 1;
@@ -283,7 +283,7 @@
             // Overwrite
             // 
             this.Overwrite.AutoSize = true;
-            this.Overwrite.Location = new System.Drawing.Point(7, 20);
+            this.Overwrite.Location = new System.Drawing.Point(10, 20);
             this.Overwrite.Name = "Overwrite";
             this.Overwrite.Size = new System.Drawing.Size(130, 17);
             this.Overwrite.TabIndex = 0;
@@ -293,35 +293,36 @@
             // game_path
             // 
             this.game_path.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.game_path.Location = new System.Drawing.Point(12, 544);
+            this.game_path.Location = new System.Drawing.Point(12, 518);
             this.game_path.Name = "game_path";
             this.game_path.Size = new System.Drawing.Size(375, 24);
             this.game_path.TabIndex = 5;
             // 
             // open_folder
             // 
-            this.open_folder.Location = new System.Drawing.Point(393, 500);
+            this.open_folder.Location = new System.Drawing.Point(395, 472);
             this.open_folder.Name = "open_folder";
             this.open_folder.Size = new System.Drawing.Size(154, 31);
             this.open_folder.TabIndex = 6;
             this.open_folder.Text = "Open games folder";
             this.open_folder.UseVisualStyleBackColor = true;
-            this.open_folder.Click += new System.EventHandler(this.open_folder_Click);
+            this.open_folder.Click += new System.EventHandler(this.Open_folder_Click);
             // 
             // execute
             // 
-            this.execute.Location = new System.Drawing.Point(393, 537);
+            this.execute.Location = new System.Drawing.Point(395, 511);
             this.execute.Name = "execute";
             this.execute.Size = new System.Drawing.Size(154, 31);
             this.execute.TabIndex = 7;
             this.execute.Text = "Execute";
             this.execute.UseVisualStyleBackColor = true;
+            this.execute.Click += new System.EventHandler(this.Execute_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(556, 576);
+            this.ClientSize = new System.Drawing.Size(556, 550);
             this.Controls.Add(this.execute);
             this.Controls.Add(this.open_folder);
             this.Controls.Add(this.game_path);
