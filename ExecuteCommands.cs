@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Runtime.InteropServices;
 
-namespace UnRenC
+namespace UnRenCS
 {
     internal class ExecuteCommands : IExecuteCommands
     {
@@ -14,10 +12,10 @@ namespace UnRenC
 
         private void ConsoleCommand(DirectoryInfo directory)
         {
-            
-            FileInfo console = new FileInfo(directory.FullName + "\\unren-console.rpy");
-            Console.WriteLine(console.FullName);
-            //console.Create();
+            using (StreamWriter consoleWrite = new StreamWriter(directory.FullName + "\\game\\unren-console.rpy"))
+            {
+                consoleWrite.Write(System.Text.Encoding.UTF8.GetString(System.Convert.FromBase64String(Base64Codes.consoleCode)));
+            }
         }
     }
 }

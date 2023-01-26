@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 
-namespace UnRenC
+namespace UnRenCS
 {
     internal interface IExecuteCommands
     {
