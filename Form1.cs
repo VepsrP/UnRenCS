@@ -34,24 +34,29 @@ namespace UnRenCS
 
                 if (One.Checked)
                 {
-                    DirectoryInfo directory= new DirectoryInfo(folderBrowserDialog.SelectedPath);
-                    gameFolders.Add(directory);
-                    foreach (DirectoryInfo gameFolder in gameFolders) directories_list.Items.Add(gameFolder.Name);
+                    DirectoryInfo directory = new DirectoryInfo(folderBrowserDialog.SelectedPath);
+                    if (directory.GetDirectories("renpy").Length > 0)
+                    {
+                        gameFolders.Add(directory);
+                        foreach (DirectoryInfo gameFolder in gameFolders) directories_list.Items.Add(gameFolder.Name);
+                        directories_list.SelectedIndex = 0;
+                    }
+                    else console_log.Text += "This game is not based on the RenPy engine. Choose another one";
                 }
 
                 if (Many.Checked)
                 {
-                    string[] directories = Directory.GetDirectories(folderBrowserDialog.SelectedPath);
-                    foreach (string directory in directories)
+                    DirectoryInfo[] directories = new DirectoryInfo(folderBrowserDialog.SelectedPath).GetDirectories();
+                    foreach (DirectoryInfo subdirectory in directories)
                     {
-                        DirectoryInfo directoryInfo = new DirectoryInfo(directory);
-                        gameFolders.Add(directoryInfo);
+                        if (subdirectory.GetDirectories("renpy").Length > 0) gameFolders.Add(subdirectory);
                     }
                     if (by_name.Checked) gameFolders = gameFolders.OrderBy(x => x.Name).ToList();
                     if (by_date.Checked) gameFolders = gameFolders.OrderByDescending(x => x.LastWriteTime).ToList();
                     foreach (DirectoryInfo gameFolder in gameFolders) directories_list.Items.Add(gameFolder.Name);
+                    directories_list.SelectedIndex = 0;
                 }
-                directories_list.SelectedIndex = 0;
+                
             }
         }
 
