@@ -5,6 +5,6 @@ namespace UnRenCS
 {
     internal interface IExecuteCommands
     {
-        void Execute(DirectoryInfo directory, List<bool> commands);
+        void Execute(DirectoryInfo directory, Commands commands);
     }
 }

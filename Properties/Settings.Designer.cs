@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UnRenC.Properties
+namespace UnRenCS.Properties
 {
 
 

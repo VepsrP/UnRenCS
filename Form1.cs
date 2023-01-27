@@ -97,7 +97,14 @@ namespace UnRenCS
                 MessageBox.Show("The list of games is empty! First, open the games folder.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } else
             {
-                executeCommands.Execute(gameFolders.Select(x => x).Where(x => x.Name == directories_list.SelectedItem.ToString()).First(), new List<bool>() { true });
+                Commands commands = new Commands();
+                commands.Rollback = rollback.Checked;
+                commands.Skip = skipping.Checked;
+                commands.Quick = quick_menu.Checked;
+                commands.Decompile = decompile.Checked;
+                commands.Unpack = unpacking.Checked;
+                commands.Console = console.Checked;
+                executeCommands.Execute(gameFolders.Select(x => x).Where(x => x.Name == directories_list.SelectedItem.ToString()).First(), commands);
             }
         }
     }
