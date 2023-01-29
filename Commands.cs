@@ -8,5 +8,6 @@
         public bool Quick = false;
         public bool Rollback = false;
         public bool Skip = false;
+        public bool Delarchives = false;
     }
 }

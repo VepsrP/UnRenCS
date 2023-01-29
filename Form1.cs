@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using UnRenC;
 
 namespace UnRenCS
 {
@@ -90,21 +90,28 @@ namespace UnRenCS
             }
         }
 
-        private void Execute_Click(object sender, EventArgs e)
+        private async void Execute_Click(object sender, EventArgs e)
         {
             if (gameFolders == null || gameFolders.Count == 0)
             {
                 MessageBox.Show("The list of games is empty! First, open the games folder.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } else
             {
-                Commands commands = new Commands();
-                commands.Rollback = rollback.Checked;
-                commands.Skip = skipping.Checked;
-                commands.Quick = quick_menu.Checked;
-                commands.Decompile = decompile.Checked;
-                commands.Unpack = unpacking.Checked;
-                commands.Console = console.Checked;
-                executeCommands.Execute(gameFolders.Select(x => x).Where(x => x.Name == directories_list.SelectedItem.ToString()).First(), commands);
+                Commands commands = new Commands
+                {
+                    Rollback = rollback.Checked,
+                    Skip = skipping.Checked,
+                    Quick = quick_menu.Checked,
+                    Decompile = decompile.Checked,
+                    Unpack = unpacking.Checked,
+                    Console = console.Checked,
+                    Delarchives = delarchives.Checked
+                };
+
+                var progress = new Progress<string>(s => console_log.Text += s);
+                var directory = gameFolders.Select(x => x).Where(x => x.Name == directories_list.SelectedItem.ToString()).First();
+                string result = await Task.Run(() => executeCommands.Execute(directory, commands, progress));
+                console_log.Text += "All commands are executed!";
             }
         }
     }
