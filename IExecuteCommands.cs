@@ -5,6 +5,6 @@ namespace UnRenCS
 {
     internal interface IExecuteCommands
     {
-        string Execute(DirectoryInfo directory, Commands commands, IProgress<string> progress);
+        void Execute(DirectoryInfo directory, Commands commands, IProgress<string> progress);
     }
 }

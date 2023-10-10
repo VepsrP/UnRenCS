@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UnRenCS
@@ -23,7 +22,12 @@ namespace UnRenCS
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to close the window?", "Closing", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes) e.Cancel = true;
+            if (executeCommands.Executed == true)
+            {
+                e.Cancel = true;
+                MessageBox.Show("Not possible to close before the end of commands!", "Attention!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (MessageBox.Show("Are you sure you want to close the window?", "Closing", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes) e.Cancel = true;
         }
 
         private void Open_folder_Click(object sender, EventArgs e)
@@ -90,7 +94,7 @@ namespace UnRenCS
             }
         }
 
-        private async void Execute_Click(object sender, EventArgs e)
+        private void Execute_Click(object sender, EventArgs e)
         {
             if (gameFolders == null || gameFolders.Count == 0)
             {
@@ -110,8 +114,8 @@ namespace UnRenCS
 
                 var progress = new Progress<string>(s => console_log.Text += s);
                 var directory = gameFolders.Select(x => x).Where(x => x.Name == directories_list.SelectedItem.ToString()).First();
-                string result = await Task.Run(() => executeCommands.Execute(directory, commands, progress));
-                console_log.Text += "All commands are executed!";
+
+                executeCommands.Execute(directory, commands, progress);
             }
         }
     }

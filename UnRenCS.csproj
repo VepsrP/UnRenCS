@@ -7,7 +7,7 @@
     <ProjectGuid>{634420CB-8C62-4D0E-9617-6F2A3D244F4F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>UnRenC</RootNamespace>
-    <AssemblyName>UnRenC</AssemblyName>
+    <AssemblyName>UnRenCS</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -31,6 +31,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>UnRenCS.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

@@ -1,9 +1,6 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Windows.Forms;
 
 namespace UnRenCS
 {
@@ -11,7 +8,10 @@ namespace UnRenCS
     {
         private string python = "";
         private IProgress<string> progress;
-        public string Execute(DirectoryInfo directory, Commands commands, IProgress<string> progress)
+        private bool executed = false;
+        public bool Executed => executed;
+
+        public void Execute(DirectoryInfo directory, Commands commands, IProgress<string> progress)
         {
             if (directory.GetDirectories("lib\\windows-x86_64").Length > 0) python = directory.GetDirectories("lib\\windows-x86_64")[0].FullName + "\\python.exe";
             if (directory.GetDirectories("lib\\windows-i686").Length > 0) python =  directory.GetDirectories("lib\\windows-i686")[0].FullName + "\\python.exe";
@@ -29,8 +29,6 @@ namespace UnRenCS
             if (commands.Quick) QuickCommand(directory);
             if (commands.Skip) SkipCommand(directory);
             if (commands.Rollback) RollbackCommand(directory);
-
-            return "All commands is executed!";
         }
 
         private void UnpackCommand(DirectoryInfo directory, string python, bool Delarchives)
@@ -43,7 +41,7 @@ namespace UnRenCS
             args += directory.FullName + "\\game";
             if (Delarchives) args += " -r";
             Process process = new Process();
-            process.StartInfo.FileName = "cmd.exe";
+            process.StartInfo.FileName = python;
             process.StartInfo.WorkingDirectory = directory.FullName + "\\game";
             process.StartInfo.RedirectStandardInput = true;
             process.StartInfo.RedirectStandardOutput = true;
@@ -52,7 +50,7 @@ namespace UnRenCS
             process.StartInfo.ErrorDialog = false;
             process.StartInfo.CreateNoWindow = true;
             process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            process.StartInfo.Arguments ="/C " + python + " " + args;
+            process.StartInfo.Arguments = args;
             process.OutputDataReceived += new DataReceivedEventHandler((sender, e) =>
             {
                 if (!string.IsNullOrEmpty(e.Data))
@@ -60,7 +58,13 @@ namespace UnRenCS
                     progress.Report(e.Data+"\n");
                 }
             });
-
+            process.EnableRaisingEvents = true;
+            process.Exited += (s, ea) =>
+            {
+                File.Delete(directory.FullName + "\\rpatool.rpy");
+                executed = false;
+            };
+            executed = true;
             process.Start();
             process.BeginOutputReadLine();
         }
