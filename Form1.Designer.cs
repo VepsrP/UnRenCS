@@ -32,6 +32,7 @@
             this.console_log = new System.Windows.Forms.RichTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.directories_list = new System.Windows.Forms.ListBox();
+            this.open_folder = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.Many = new System.Windows.Forms.RadioButton();
             this.One = new System.Windows.Forms.RadioButton();
@@ -49,7 +50,6 @@
             this.dump = new System.Windows.Forms.CheckBox();
             this.deobfuscation = new System.Windows.Forms.CheckBox();
             this.Overwrite = new System.Windows.Forms.CheckBox();
-            this.open_folder = new System.Windows.Forms.Button();
             this.execute = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.delarchives = new System.Windows.Forms.CheckBox();
@@ -81,6 +81,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.console_log.Location = new System.Drawing.Point(6, 19);
             this.console_log.Name = "console_log";
+            this.console_log.ReadOnly = true;
             this.console_log.Size = new System.Drawing.Size(523, 135);
             this.console_log.TabIndex = 0;
             this.console_log.Text = "";
@@ -107,6 +108,17 @@
             this.directories_list.Name = "directories_list";
             this.directories_list.Size = new System.Drawing.Size(413, 238);
             this.directories_list.TabIndex = 2;
+            // 
+            // open_folder
+            // 
+            this.open_folder.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.open_folder.Location = new System.Drawing.Point(424, 181);
+            this.open_folder.Name = "open_folder";
+            this.open_folder.Size = new System.Drawing.Size(105, 76);
+            this.open_folder.TabIndex = 6;
+            this.open_folder.Text = "Open\r\ngames\r\nfolder";
+            this.open_folder.UseVisualStyleBackColor = true;
+            this.open_folder.Click += new System.EventHandler(this.Open_folder_Click);
             // 
             // groupBox4
             // 
@@ -307,17 +319,6 @@
             this.Overwrite.TabIndex = 0;
             this.Overwrite.Text = "Overwrite existing files";
             this.Overwrite.UseVisualStyleBackColor = true;
-            // 
-            // open_folder
-            // 
-            this.open_folder.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.open_folder.Location = new System.Drawing.Point(424, 181);
-            this.open_folder.Name = "open_folder";
-            this.open_folder.Size = new System.Drawing.Size(105, 76);
-            this.open_folder.TabIndex = 6;
-            this.open_folder.Text = "Open\r\ngames\r\nfolder";
-            this.open_folder.UseVisualStyleBackColor = true;
-            this.open_folder.Click += new System.EventHandler(this.Open_folder_Click);
             // 
             // execute
             // 

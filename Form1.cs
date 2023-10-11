@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using System.Threading;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace UnRenCS
 {
@@ -13,6 +15,14 @@ namespace UnRenCS
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void ConsoleLogUpdate(string message)
+        {
+            console_log.AppendText(message);
+            console_log.SelectionStart = console_log.Text.Length;
+            console_log.ScrollToCaret();
+            Thread.Sleep(75);
         }
 
         private void QuitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -112,10 +122,12 @@ namespace UnRenCS
                     Delarchives = delarchives.Checked
                 };
 
-                var progress = new Progress<string>(s => console_log.Text += s);
+                //var progress = new Progress<string>(s => console_log.Text += s);
+                var progress = new Progress<string>(ConsoleLogUpdate);
                 var directory = gameFolders.Select(x => x).Where(x => x.Name == directories_list.SelectedItem.ToString()).First();
 
-                executeCommands.Execute(directory, commands, progress);
+                Thread executeThread = new Thread(() => executeCommands.Execute(directory, commands, progress));
+                executeThread.Start();
             }
         }
     }
