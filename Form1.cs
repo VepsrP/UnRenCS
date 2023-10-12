@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Threading;
-using static System.Net.Mime.MediaTypeNames;
+using UnRenC;
 
 namespace UnRenCS
 {
@@ -38,48 +38,110 @@ namespace UnRenCS
                 MessageBox.Show("Not possible to close before the end of commands!", "Attention!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (MessageBox.Show("Are you sure you want to close the window?", "Closing", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes) e.Cancel = true;
+
+            else
+            {
+                //One or many games folder selected
+                if (One.Checked) UnRenSettings.Default["Amount"] = One.Name;
+                if (Many.Checked) UnRenSettings.Default["Amount"] = Many.Name;
+
+                //Sorting
+                if (By_Name.Checked) UnRenSettings.Default.Sorting = By_Name.Name;
+                if (By_Date.Checked) UnRenSettings.Default.Sorting = By_Date.Name;
+
+                //Executable commands
+                UnRenSettings.Default.Unpacking = Unpacking.Checked;
+                UnRenSettings.Default.Decompile = Decompile.Checked;
+                UnRenSettings.Default.Console = Console.Checked;
+                UnRenSettings.Default.Quick_menu = Quick_menu.Checked;
+                UnRenSettings.Default.Skipping = Skipping.Checked;
+                UnRenSettings.Default.Rollback = Rollback.Checked;
+
+                //Decompiler options
+                UnRenSettings.Default.Overwrite = Overwrite.Checked;
+                UnRenSettings.Default.Deobfuscation = Deobfuscation.Checked;
+                UnRenSettings.Default.Dump = Dump.Checked;
+
+                //Unpaking options
+                UnRenSettings.Default.Delarchives = Delarchives.Checked;
+
+                UnRenSettings.Default.Save();
+            }
         }
 
         private void Open_folder_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+
+            if (folderBrowserDialog.ShowDialog() == DialogResult.OK) Directories_Fill(folderBrowserDialog.SelectedPath);
+        }
+
+        private void Directories_Fill(string SelectedPath)
+        {
+            gameFolders = new List<DirectoryInfo>();
+            directories_list.Items.Clear();
+
+            if (One.Checked)
             {
-                gameFolders = new List<DirectoryInfo>();
-                directories_list.Items.Clear();
-
-                if (One.Checked)
+                DirectoryInfo directory = new DirectoryInfo(SelectedPath);
+                if (directory.GetDirectories("renpy").Length > 0)
                 {
-                    DirectoryInfo directory = new DirectoryInfo(folderBrowserDialog.SelectedPath);
-                    if (directory.GetDirectories("renpy").Length > 0)
-                    {
-                        gameFolders.Add(directory);
-                        foreach (DirectoryInfo gameFolder in gameFolders) directories_list.Items.Add(gameFolder.Name);
-                        directories_list.SelectedIndex = 0;
-                    }
-                    else console_log.Text += "This game is not based on the RenPy engine. Choose another one";
-                }
-
-                if (Many.Checked)
-                {
-                    DirectoryInfo[] directories = new DirectoryInfo(folderBrowserDialog.SelectedPath).GetDirectories();
-                    foreach (DirectoryInfo subdirectory in directories)
-                    {
-                        if (subdirectory.GetDirectories("renpy").Length > 0) gameFolders.Add(subdirectory);
-                    }
-                    if (by_name.Checked) gameFolders = gameFolders.OrderBy(x => x.Name).ToList();
-                    if (by_date.Checked) gameFolders = gameFolders.OrderByDescending(x => x.LastWriteTime).ToList();
+                    UnRenSettings.Default.SelectedPath = SelectedPath;
+                    gameFolders.Add(directory);
                     foreach (DirectoryInfo gameFolder in gameFolders) directories_list.Items.Add(gameFolder.Name);
                     directories_list.SelectedIndex = 0;
+                    return;
                 }
-                
+                console_log.Text += "This folder not have game based on the RenPy engine. Choose another one";
+                UnRenSettings.Default.SelectedPath = "";
+            }
+
+            if (Many.Checked)
+            {
+                DirectoryInfo[] directories = new DirectoryInfo(SelectedPath).GetDirectories();
+                foreach (DirectoryInfo subdirectory in directories)
+                {
+                    if (subdirectory.GetDirectories("renpy").Length > 0) gameFolders.Add(subdirectory);
+                }
+                if (!gameFolders.Any())
+                {
+                    console_log.Text += "This folder not have games based on the RenPy engine. Choose another one";
+                    UnRenSettings.Default.SelectedPath = "";
+                    return;
+                }
+                if (By_Name.Checked) gameFolders = gameFolders.OrderBy(x => x.Name).ToList();
+                if (By_Date.Checked) gameFolders = gameFolders.OrderByDescending(x => x.LastWriteTime).ToList();
+                foreach (DirectoryInfo gameFolder in gameFolders) directories_list.Items.Add(gameFolder.Name);
+                directories_list.SelectedIndex = 0;
             }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Many.Checked = true;
-            by_name.Checked = true;
+            //One or many games folder selected
+            ((RadioButton)groupBox4.Controls[UnRenSettings.Default.Amount]).Checked = true;
+
+            //Sorting
+            ((RadioButton)groupBox3.Controls[UnRenSettings.Default.Sorting]).Checked = true;
+
+            //Executable commands
+            Unpacking.Checked = UnRenSettings.Default.Unpacking;
+            Decompile.Checked = UnRenSettings.Default.Decompile;
+            Console.Checked = UnRenSettings.Default.Console;
+            Quick_menu.Checked = UnRenSettings.Default.Quick_menu;
+            Skipping.Checked = UnRenSettings.Default.Skipping;
+            Rollback.Checked = UnRenSettings.Default.Rollback;
+
+            //Decompiler options
+            Overwrite.Checked = UnRenSettings.Default.Overwrite;
+            Deobfuscation.Checked = UnRenSettings.Default.Deobfuscation;
+            Dump.Checked = UnRenSettings.Default.Dump;
+
+            //Unpaking options
+            Delarchives.Checked = UnRenSettings.Default.Delarchives;
+
+            //Fill directories
+            if (UnRenSettings.Default.SelectedPath != "") Directories_Fill(UnRenSettings.Default.SelectedPath);
         }
 
         private void By_name_Click(object sender, EventArgs e)
@@ -113,13 +175,13 @@ namespace UnRenCS
             {
                 Commands commands = new Commands
                 {
-                    Rollback = rollback.Checked,
-                    Skip = skipping.Checked,
-                    Quick = quick_menu.Checked,
-                    Decompile = decompile.Checked,
-                    Unpack = unpacking.Checked,
-                    Console = console.Checked,
-                    Delarchives = delarchives.Checked
+                    Rollback = Rollback.Checked,
+                    Skip = Skipping.Checked,
+                    Quick = Quick_menu.Checked,
+                    Decompile = Decompile.Checked,
+                    Unpack = Unpacking.Checked,
+                    Console = Console.Checked,
+                    Delarchives = Delarchives.Checked
                 };
 
                 //var progress = new Progress<string>(s => console_log.Text += s);
@@ -128,6 +190,24 @@ namespace UnRenCS
 
                 Thread executeThread = new Thread(() => executeCommands.Execute(directory, commands, progress));
                 executeThread.Start();
+            }
+        }
+
+        private void One_Click(object sender, EventArgs e)
+        {
+            if (UnRenSettings.Default.Amount == "Many")
+            {
+                directories_list.Items.Clear();
+                UnRenSettings.Default.Amount = "One";
+            }
+        }
+
+        private void Many_Click(object sender, EventArgs e)
+        {
+            if (UnRenSettings.Default.Amount == "One")
+            {
+                directories_list.Items.Clear();
+                UnRenSettings.Default.Amount = "Many";
             }
         }
     }
