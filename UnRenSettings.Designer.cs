@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UnRenC {
+namespace UnRenCS {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

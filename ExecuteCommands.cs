@@ -29,7 +29,7 @@ namespace UnRenCS
             {
                 UnpackCommand(directory, python, commands.Delarchives);
             }
-            if (commands.Decompile) DecompileCommand(directory, python);
+            if (commands.Decompile) DecompileCommand(directory, python, commands.OverWrite, commands.Deobfuscation, commands.Dump);
 
             if (commands.Console) ConsoleCommand(directory);
             if (commands.Quick) QuickCommand(directory);
@@ -78,7 +78,7 @@ namespace UnRenCS
                 
         }
 
-        private void DecompileCommand(DirectoryInfo directory, string python)
+        private void DecompileCommand(DirectoryInfo directory, string python, bool OverWrite, bool Deobfuscation, bool Dump)
         {
             byte[] bytes = Convert.FromBase64String(Base64Codes.decompileCode);
             File.WriteAllBytes(directory.FullName + "\\unrpyc.zip", bytes);
@@ -86,6 +86,9 @@ namespace UnRenCS
 
             string args = directory.FullName + "\\unrpyc.py ";
             args += directory.FullName + "\\game";
+            if (OverWrite) args += " -c";
+            if (Deobfuscation) args += " --try-harder";
+            if (Dump) args += " -d";
             Process process = new Process();
             process.StartInfo.FileName = python;
             process.StartInfo.WorkingDirectory = directory.FullName + "\\game";

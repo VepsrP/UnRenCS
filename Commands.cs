@@ -9,5 +9,8 @@
         public bool Rollback = false;
         public bool Skip = false;
         public bool Delarchives = false;
+        public bool OverWrite = false;
+        public bool Deobfuscation = false;
+        public bool Dump = false;
     }
 }

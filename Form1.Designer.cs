@@ -69,7 +69,7 @@
             this.groupBox1.Controls.Add(this.console_log);
             this.groupBox1.Location = new System.Drawing.Point(12, 15);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(535, 160);
+            this.groupBox1.Size = new System.Drawing.Size(819, 258);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Console Log";
@@ -79,10 +79,11 @@
             this.console_log.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.console_log.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.console_log.Location = new System.Drawing.Point(6, 19);
             this.console_log.Name = "console_log";
             this.console_log.ReadOnly = true;
-            this.console_log.Size = new System.Drawing.Size(523, 135);
+            this.console_log.Size = new System.Drawing.Size(807, 233);
             this.console_log.TabIndex = 0;
             this.console_log.Text = "";
             // 
@@ -92,27 +93,27 @@
             this.groupBox2.Controls.Add(this.open_folder);
             this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.groupBox3);
-            this.groupBox2.Location = new System.Drawing.Point(12, 180);
+            this.groupBox2.Location = new System.Drawing.Point(12, 279);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(535, 269);
+            this.groupBox2.Size = new System.Drawing.Size(819, 269);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Game folders";
             // 
             // directories_list
             // 
-            this.directories_list.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.directories_list.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.directories_list.FormattingEnabled = true;
-            this.directories_list.ItemHeight = 18;
+            this.directories_list.ItemHeight = 19;
             this.directories_list.Location = new System.Drawing.Point(5, 19);
             this.directories_list.Name = "directories_list";
-            this.directories_list.Size = new System.Drawing.Size(413, 238);
+            this.directories_list.Size = new System.Drawing.Size(697, 232);
             this.directories_list.TabIndex = 2;
             // 
             // open_folder
             // 
             this.open_folder.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.open_folder.Location = new System.Drawing.Point(424, 181);
+            this.open_folder.Location = new System.Drawing.Point(708, 181);
             this.open_folder.Name = "open_folder";
             this.open_folder.Size = new System.Drawing.Size(105, 76);
             this.open_folder.TabIndex = 6;
@@ -124,7 +125,7 @@
             // 
             this.groupBox4.Controls.Add(this.Many);
             this.groupBox4.Controls.Add(this.One);
-            this.groupBox4.Location = new System.Drawing.Point(424, 14);
+            this.groupBox4.Location = new System.Drawing.Point(708, 19);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(105, 83);
             this.groupBox4.TabIndex = 1;
@@ -163,7 +164,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.By_Date);
             this.groupBox3.Controls.Add(this.By_Name);
-            this.groupBox3.Location = new System.Drawing.Point(424, 103);
+            this.groupBox3.Location = new System.Drawing.Point(708, 103);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(105, 72);
             this.groupBox3.TabIndex = 0;
@@ -204,9 +205,10 @@
             this.groupBox5.Controls.Add(this.Console);
             this.groupBox5.Controls.Add(this.Decompile);
             this.groupBox5.Controls.Add(this.Unpacking);
-            this.groupBox5.Location = new System.Drawing.Point(12, 455);
+            this.groupBox5.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox5.Location = new System.Drawing.Point(12, 554);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(343, 182);
+            this.groupBox5.Size = new System.Drawing.Size(555, 182);
             this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Executable commands";
@@ -214,10 +216,10 @@
             // Rollback
             // 
             this.Rollback.AutoSize = true;
-            this.Rollback.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Rollback.Location = new System.Drawing.Point(10, 120);
+            this.Rollback.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Rollback.Location = new System.Drawing.Point(5, 145);
             this.Rollback.Name = "Rollback";
-            this.Rollback.Size = new System.Drawing.Size(299, 18);
+            this.Rollback.Size = new System.Drawing.Size(379, 23);
             this.Rollback.TabIndex = 5;
             this.Rollback.Text = "6. Force enable rollback (scroll wheel)";
             this.Rollback.UseVisualStyleBackColor = true;
@@ -225,10 +227,10 @@
             // Skipping
             // 
             this.Skipping.AutoSize = true;
-            this.Skipping.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Skipping.Location = new System.Drawing.Point(10, 100);
+            this.Skipping.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Skipping.Location = new System.Drawing.Point(5, 120);
             this.Skipping.Name = "Skipping";
-            this.Skipping.Size = new System.Drawing.Size(313, 18);
+            this.Skipping.Size = new System.Drawing.Size(397, 23);
             this.Skipping.TabIndex = 4;
             this.Skipping.Text = "5. Force enabling skipping unseen content";
             this.Skipping.UseVisualStyleBackColor = true;
@@ -236,10 +238,10 @@
             // Quick_menu
             // 
             this.Quick_menu.AutoSize = true;
-            this.Quick_menu.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Quick_menu.Location = new System.Drawing.Point(10, 80);
+            this.Quick_menu.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Quick_menu.Location = new System.Drawing.Point(5, 95);
             this.Quick_menu.Name = "Quick_menu";
-            this.Quick_menu.Size = new System.Drawing.Size(243, 18);
+            this.Quick_menu.Size = new System.Drawing.Size(307, 23);
             this.Quick_menu.TabIndex = 3;
             this.Quick_menu.Text = "4. Enabling quick save and load";
             this.Quick_menu.UseVisualStyleBackColor = true;
@@ -247,10 +249,10 @@
             // Console
             // 
             this.Console.AutoSize = true;
-            this.Console.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Console.Location = new System.Drawing.Point(10, 60);
+            this.Console.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Console.Location = new System.Drawing.Point(5, 70);
             this.Console.Name = "Console";
-            this.Console.Size = new System.Drawing.Size(320, 18);
+            this.Console.Size = new System.Drawing.Size(406, 23);
             this.Console.TabIndex = 2;
             this.Console.Text = "3. Enabling the developer console and menu";
             this.Console.UseVisualStyleBackColor = true;
@@ -258,10 +260,10 @@
             // Decompile
             // 
             this.Decompile.AutoSize = true;
-            this.Decompile.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Decompile.Location = new System.Drawing.Point(10, 40);
+            this.Decompile.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Decompile.Location = new System.Drawing.Point(5, 45);
             this.Decompile.Name = "Decompile";
-            this.Decompile.Size = new System.Drawing.Size(152, 18);
+            this.Decompile.Size = new System.Drawing.Size(190, 23);
             this.Decompile.TabIndex = 1;
             this.Decompile.Text = "2. Decompile files";
             this.Decompile.UseVisualStyleBackColor = true;
@@ -269,10 +271,10 @@
             // Unpacking
             // 
             this.Unpacking.AutoSize = true;
-            this.Unpacking.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Unpacking.Location = new System.Drawing.Point(10, 20);
+            this.Unpacking.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Unpacking.Location = new System.Drawing.Point(5, 20);
             this.Unpacking.Name = "Unpacking";
-            this.Unpacking.Size = new System.Drawing.Size(110, 18);
+            this.Unpacking.Size = new System.Drawing.Size(136, 23);
             this.Unpacking.TabIndex = 0;
             this.Unpacking.Text = "1. Unpacking";
             this.Unpacking.UseVisualStyleBackColor = true;
@@ -282,9 +284,10 @@
             this.groupBox6.Controls.Add(this.Dump);
             this.groupBox6.Controls.Add(this.Deobfuscation);
             this.groupBox6.Controls.Add(this.Overwrite);
-            this.groupBox6.Location = new System.Drawing.Point(361, 455);
+            this.groupBox6.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox6.Location = new System.Drawing.Point(573, 554);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(186, 97);
+            this.groupBox6.Size = new System.Drawing.Size(258, 97);
             this.groupBox6.TabIndex = 4;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Decompiler options";
@@ -292,10 +295,10 @@
             // Dump
             // 
             this.Dump.AutoSize = true;
-            this.Dump.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Dump.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Dump.Location = new System.Drawing.Point(10, 70);
             this.Dump.Name = "Dump";
-            this.Dump.Size = new System.Drawing.Size(98, 17);
+            this.Dump.Size = new System.Drawing.Size(136, 23);
             this.Dump.TabIndex = 2;
             this.Dump.Text = "Write a dump";
             this.Dump.UseVisualStyleBackColor = true;
@@ -303,10 +306,10 @@
             // Deobfuscation
             // 
             this.Deobfuscation.AutoSize = true;
-            this.Deobfuscation.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Deobfuscation.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Deobfuscation.Location = new System.Drawing.Point(10, 45);
             this.Deobfuscation.Name = "Deobfuscation";
-            this.Deobfuscation.Size = new System.Drawing.Size(104, 17);
+            this.Deobfuscation.Size = new System.Drawing.Size(145, 23);
             this.Deobfuscation.TabIndex = 1;
             this.Deobfuscation.Text = "Deobfuscation";
             this.Deobfuscation.UseVisualStyleBackColor = true;
@@ -314,10 +317,10 @@
             // Overwrite
             // 
             this.Overwrite.AutoSize = true;
-            this.Overwrite.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Overwrite.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Overwrite.Location = new System.Drawing.Point(10, 20);
             this.Overwrite.Name = "Overwrite";
-            this.Overwrite.Size = new System.Drawing.Size(170, 17);
+            this.Overwrite.Size = new System.Drawing.Size(244, 23);
             this.Overwrite.TabIndex = 0;
             this.Overwrite.Text = "Overwrite existing files";
             this.Overwrite.UseVisualStyleBackColor = true;
@@ -325,9 +328,9 @@
             // execute
             // 
             this.execute.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.execute.Location = new System.Drawing.Point(361, 606);
+            this.execute.Location = new System.Drawing.Point(573, 705);
             this.execute.Name = "execute";
-            this.execute.Size = new System.Drawing.Size(186, 31);
+            this.execute.Size = new System.Drawing.Size(255, 31);
             this.execute.TabIndex = 7;
             this.execute.Text = "Execute";
             this.execute.UseVisualStyleBackColor = true;
@@ -336,9 +339,10 @@
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.Delarchives);
-            this.groupBox7.Location = new System.Drawing.Point(361, 558);
+            this.groupBox7.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox7.Location = new System.Drawing.Point(573, 655);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(186, 42);
+            this.groupBox7.Size = new System.Drawing.Size(258, 42);
             this.groupBox7.TabIndex = 8;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Unpaking options";
@@ -346,9 +350,10 @@
             // Delarchives
             // 
             this.Delarchives.AutoSize = true;
+            this.Delarchives.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Delarchives.Location = new System.Drawing.Point(7, 18);
             this.Delarchives.Name = "Delarchives";
-            this.Delarchives.Size = new System.Drawing.Size(152, 17);
+            this.Delarchives.Size = new System.Drawing.Size(217, 23);
             this.Delarchives.TabIndex = 0;
             this.Delarchives.Text = "Del unpacked archives";
             this.Delarchives.UseVisualStyleBackColor = true;
@@ -357,7 +362,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(556, 645);
+            this.ClientSize = new System.Drawing.Size(840, 752);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.execute);
             this.Controls.Add(this.groupBox6);

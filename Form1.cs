@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Threading;
-using UnRenC;
 
 namespace UnRenCS
 {
@@ -90,6 +89,7 @@ namespace UnRenCS
                     gameFolders.Add(directory);
                     foreach (DirectoryInfo gameFolder in gameFolders) directories_list.Items.Add(gameFolder.Name);
                     directories_list.SelectedIndex = 0;
+                    UnRenSettings.Default.SelectedPath = SelectedPath;
                     return;
                 }
                 console_log.Text += "This folder not have game based on the RenPy engine. Choose another one";
@@ -113,6 +113,7 @@ namespace UnRenCS
                 if (By_Date.Checked) gameFolders = gameFolders.OrderByDescending(x => x.LastWriteTime).ToList();
                 foreach (DirectoryInfo gameFolder in gameFolders) directories_list.Items.Add(gameFolder.Name);
                 directories_list.SelectedIndex = 0;
+                UnRenSettings.Default.SelectedPath = SelectedPath;
             }
         }
 
@@ -181,7 +182,10 @@ namespace UnRenCS
                     Decompile = Decompile.Checked,
                     Unpack = Unpacking.Checked,
                     Console = Console.Checked,
-                    Delarchives = Delarchives.Checked
+                    Delarchives = Delarchives.Checked,
+                    OverWrite = Overwrite.Checked,
+                    Deobfuscation = Deobfuscation.Checked,
+                    Dump = Dump.Checked
                 };
 
                 //var progress = new Progress<string>(s => console_log.Text += s);
