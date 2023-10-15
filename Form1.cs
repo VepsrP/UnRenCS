@@ -11,6 +11,7 @@ namespace UnRenCS
     {
         private List<DirectoryInfo> gameFolders;
         private readonly ExecuteCommands executeCommands = new ExecuteCommands();
+        public delegate void Unblock();
         public Form1()
         {
             InitializeComponent();
@@ -172,8 +173,10 @@ namespace UnRenCS
             if (gameFolders == null || gameFolders.Count == 0)
             {
                 MessageBox.Show("The list of games is empty! First, open the games folder.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } else
+            }
+            else
             {
+                BlockGui();
                 Commands commands = new Commands
                 {
                     Rollback = Rollback.Checked,
@@ -188,13 +191,65 @@ namespace UnRenCS
                     Dump = Dump.Checked
                 };
 
-                //var progress = new Progress<string>(s => console_log.Text += s);
                 var progress = new Progress<string>(ConsoleLogUpdate);
                 var directory = gameFolders.Select(x => x).Where(x => x.Name == directories_list.SelectedItem.ToString()).First();
 
-                Thread executeThread = new Thread(() => executeCommands.Execute(directory, commands, progress));
+                Unblock unblock = UnblockGui;
+
+
+                Thread executeThread = new Thread(() => executeCommands.Execute(directory, commands, progress, this, unblock));
                 executeThread.Start();
             }
+        }
+
+        private void BlockGui()
+        {
+            One.Enabled = false;
+            Many.Enabled = false;
+
+            By_Name.Enabled = false;
+            By_Date.Enabled = false;
+
+            Unpacking.Enabled = false;
+            Decompile.Enabled = false;
+            Console.Enabled = false;
+            Quick_menu.Enabled = false;
+            Skipping.Enabled = false;
+            Rollback.Enabled = false;
+
+            Overwrite.Enabled = false;
+            Deobfuscation.Enabled = false;
+            Dump.Enabled = false;
+
+            Delarchives.Enabled = false;
+
+            open_folder.Enabled = false;
+            execute.Enabled = false;
+        }
+
+        private void UnblockGui()
+        {
+            One.Enabled = true;
+            Many.Enabled = true;
+
+            By_Name.Enabled = true;
+            By_Date.Enabled = true;
+
+            Unpacking.Enabled = true;
+            Decompile.Enabled = true;
+            Console.Enabled = true;
+            Quick_menu.Enabled = true;
+            Skipping.Enabled = true;
+            Rollback.Enabled = true;
+
+            Overwrite.Enabled = true;
+            Deobfuscation.Enabled = true;
+            Dump.Enabled = true;
+
+            Delarchives.Enabled = true;
+
+            open_folder.Enabled = true;
+            execute.Enabled = true;
         }
 
         private void One_Click(object sender, EventArgs e)

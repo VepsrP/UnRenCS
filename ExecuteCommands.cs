@@ -4,6 +4,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Text;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace UnRenCS
 {
@@ -14,7 +15,7 @@ namespace UnRenCS
         private bool executed = false;
         public bool Executed => executed;
 
-        public void Execute(DirectoryInfo directory, Commands commands, IProgress<string> progress)
+        public void Execute(DirectoryInfo directory, Commands commands, IProgress<string> progress,Form1 form1, Form1.Unblock unblock)
         {
             if (directory.GetDirectories("lib\\windows-x86_64").Length > 0) python = directory.GetDirectories("lib\\windows-x86_64")[0].FullName + "\\python.exe";
             if (directory.GetDirectories("lib\\windows-i686").Length > 0) python =  directory.GetDirectories("lib\\windows-i686")[0].FullName + "\\python.exe";
@@ -27,17 +28,19 @@ namespace UnRenCS
 
             if (commands.Unpack)
             {
-                UnpackCommand(directory, python, commands.Delarchives);
+                UnpackCommand(directory, commands.Delarchives);
             }
-            if (commands.Decompile) DecompileCommand(directory, python, commands.OverWrite, commands.Deobfuscation, commands.Dump);
+            if (commands.Decompile) DecompileCommand(directory, commands.OverWrite, commands.Deobfuscation, commands.Dump);
 
             if (commands.Console) ConsoleCommand(directory);
             if (commands.Quick) QuickCommand(directory);
             if (commands.Skip) SkipCommand(directory);
             if (commands.Rollback) RollbackCommand(directory);
+            progress.Report("All commands are finished!");
+            form1.Invoke(new MethodInvoker(() => unblock()));
         }
 
-        private void UnpackCommand(DirectoryInfo directory, string python, bool Delarchives)
+        private void UnpackCommand(DirectoryInfo directory, bool Delarchives)
         {
             using (StreamWriter unpackWrite = new StreamWriter(directory.FullName + "\\rpatool.rpy"))
             {
@@ -46,39 +49,13 @@ namespace UnRenCS
             string args = directory.FullName + "\\rpatool.rpy ";
             args += directory.FullName + "\\game";
             if (Delarchives) args += " -r";
-            Process process = new Process();
-            process.StartInfo.FileName = python;
-            process.StartInfo.WorkingDirectory = directory.FullName + "\\game";
-            process.StartInfo.RedirectStandardInput = true;
-            process.StartInfo.RedirectStandardOutput = true;
-            process.StartInfo.RedirectStandardError = true;
-            process.StartInfo.UseShellExecute = false;
-            process.StartInfo.ErrorDialog = false;
-            process.StartInfo.CreateNoWindow = true;
-            process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            process.StartInfo.Arguments = args;
-            process.OutputDataReceived += new DataReceivedEventHandler((sender, e) =>
-            {
-                if (!string.IsNullOrEmpty(e.Data))
-                {
-                    progress.Report(e.Data+"\n");
-                }
-            });
-            process.EnableRaisingEvents = true;
-            process.Exited += (s, ea) =>
-            {
-                File.Delete(directory.FullName + "\\rpatool.rpy");
-                executed = false;
-            };
-            executed = true;
-            process.Start();
-            process.BeginOutputReadLine();
-            while (process.HasExited == false)
-                Thread.Sleep(100);
+            StartProcess(directory, args);
+            File.Delete(directory.FullName + "\\rpatool.rpy");
+            executed = false;
                 
         }
 
-        private void DecompileCommand(DirectoryInfo directory, string python, bool OverWrite, bool Deobfuscation, bool Dump)
+        private void DecompileCommand(DirectoryInfo directory, bool OverWrite, bool Deobfuscation, bool Dump)
         {
             byte[] bytes = Convert.FromBase64String(Base64Codes.decompileCode);
             File.WriteAllBytes(directory.FullName + "\\unrpyc.zip", bytes);
@@ -89,42 +66,47 @@ namespace UnRenCS
             if (OverWrite) args += " -c";
             if (Deobfuscation) args += " --try-harder";
             if (Dump) args += " -d";
-            Process process = new Process();
-            process.StartInfo.FileName = python;
-            process.StartInfo.WorkingDirectory = directory.FullName + "\\game";
-            process.StartInfo.RedirectStandardInput = true;
-            process.StartInfo.RedirectStandardOutput = true;
-            process.StartInfo.RedirectStandardError = true;
-            process.StartInfo.UseShellExecute = false;
-            process.StartInfo.ErrorDialog = false;
-            process.StartInfo.CreateNoWindow = true;
-            process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            process.StartInfo.Arguments = args;
-            process.OutputDataReceived += new DataReceivedEventHandler((sender, e) =>
+            StartProcess(directory, args);
+            File.Delete(directory.FullName + "\\unrpyc.zip");
+            File.Delete(directory.FullName + "\\unrpyc.py");
+            File.Delete(directory.FullName + "\\deobfuscate.py");
+            Directory.Delete(directory.FullName + "\\decompiler", true);
+            executed = false;
+        }
+
+        private void StartProcess(DirectoryInfo directory, string args)
+        {
+            try
             {
-                if (!string.IsNullOrEmpty(e.Data))
+                Process process = new Process();
+                process.StartInfo.FileName = python;
+                process.StartInfo.WorkingDirectory = directory.FullName + "\\game";
+                process.StartInfo.RedirectStandardInput = true;
+                process.StartInfo.RedirectStandardOutput = true;
+                process.StartInfo.RedirectStandardError = true;
+                process.StartInfo.UseShellExecute = false;
+                process.StartInfo.ErrorDialog = false;
+                process.StartInfo.CreateNoWindow = true;
+                process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                process.StartInfo.Arguments = args;
+                process.OutputDataReceived += new DataReceivedEventHandler((sender, e) =>
                 {
-                    progress.Report(e.Data + "\n");
-                }
-            });
-            process.EnableRaisingEvents = true;
-            process.Exited += (s, ea) =>
+                    if (!string.IsNullOrEmpty(e.Data))
+                    {
+                        progress.Report(e.Data + "\n");
+                    }
+                });
+                process.EnableRaisingEvents = true;
+                executed = true;
+                process.Start();
+                process.BeginOutputReadLine();
+                while (process.HasExited == false)
+                    Thread.Sleep(100);
+            }
+            catch (Exception ex)
             {
-                File.Delete(directory.FullName + "\\unrpyc.zip");
-                File.Delete(directory.FullName + "\\unrpyc.py");
-                File.Delete(directory.FullName + "\\deobfuscate.py");
-                Directory.Delete(directory.FullName + "\\decompiler", true);
-                executed = false;
-            };
-            executed = true;
-            process.Start();
-            process.BeginOutputReadLine();
-            while (process.HasExited == false)
-                Thread.Sleep(100);
-
-            
-
-            //Process.Start(directory.FullName + "\\", "");
+                progress.Report(ex.ToString() + "\n");
+            }
         }
 
         private void ConsoleCommand(DirectoryInfo directory)

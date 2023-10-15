@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.console_log = new System.Windows.Forms.RichTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -67,6 +68,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.console_log);
+            this.groupBox1.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(12, 15);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(819, 258);
@@ -93,6 +95,7 @@
             this.groupBox2.Controls.Add(this.open_folder);
             this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.groupBox3);
+            this.groupBox2.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox2.Location = new System.Drawing.Point(12, 279);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(819, 269);
@@ -107,17 +110,17 @@
             this.directories_list.ItemHeight = 19;
             this.directories_list.Location = new System.Drawing.Point(5, 19);
             this.directories_list.Name = "directories_list";
-            this.directories_list.Size = new System.Drawing.Size(697, 232);
+            this.directories_list.Size = new System.Drawing.Size(638, 232);
             this.directories_list.TabIndex = 2;
             // 
             // open_folder
             // 
-            this.open_folder.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.open_folder.Location = new System.Drawing.Point(708, 181);
+            this.open_folder.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.open_folder.Location = new System.Drawing.Point(649, 181);
             this.open_folder.Name = "open_folder";
-            this.open_folder.Size = new System.Drawing.Size(105, 76);
+            this.open_folder.Size = new System.Drawing.Size(164, 76);
             this.open_folder.TabIndex = 6;
-            this.open_folder.Text = "Open\r\ngames\r\nfolder";
+            this.open_folder.Text = "Open\r\ngames folder";
             this.open_folder.UseVisualStyleBackColor = true;
             this.open_folder.Click += new System.EventHandler(this.Open_folder_Click);
             // 
@@ -125,9 +128,10 @@
             // 
             this.groupBox4.Controls.Add(this.Many);
             this.groupBox4.Controls.Add(this.One);
-            this.groupBox4.Location = new System.Drawing.Point(708, 19);
+            this.groupBox4.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox4.Location = new System.Drawing.Point(649, 19);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(105, 83);
+            this.groupBox4.Size = new System.Drawing.Size(164, 83);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Amount of games";
@@ -164,9 +168,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.By_Date);
             this.groupBox3.Controls.Add(this.By_Name);
-            this.groupBox3.Location = new System.Drawing.Point(708, 103);
+            this.groupBox3.Location = new System.Drawing.Point(649, 103);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(105, 72);
+            this.groupBox3.Size = new System.Drawing.Size(164, 72);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Sorting";
@@ -371,11 +375,12 @@
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "UnRenGui";
+            this.Text = "UnRenGui 1.0";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
